@@ -38,10 +38,11 @@ class MyApp extends StatelessWidget {
           ),
         )
         */
+        /*
         body: Container(
           child: Text('Body Text',
                 style: TextStyle(
-                fontSize:50.0,
+                fontSize:30.0,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
                 color: Colors.green
@@ -55,8 +56,67 @@ class MyApp extends StatelessWidget {
           //padding: EdgeInsets.symmetric(vertical: 10.0),
           padding: EdgeInsets.symmetric(vertical:5.0, horizontal: 10.0),
           alignment: Alignment.center,
-          height: 250.0,
-          width: 250,
+          height: 180.0,
+          width: 180.0,
+        )
+        */
+        //here we remember that Column and Row behaviour are almost same
+        /*
+          body: Column(
+          children: [
+            Container(
+              child: Text('Container One',
+                style: TextStyle(
+                    fontSize:30.0,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.green
+                ),
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.pink,
+                  shape: BoxShape.rectangle
+              ),
+              margin: EdgeInsets.only(top: 40.0, left: 20.0),
+              alignment: Alignment.center,
+              height: 180.0,
+              width: 180.0,
+            ),
+            SizedBox(height: 20.0,),
+            Container(
+              child: Text('Container Two',
+                style: TextStyle(
+                    fontSize:30.0,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.green
+                ),
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.pink,
+                  shape: BoxShape.rectangle
+              ),
+              margin: EdgeInsets.only(left: 20.0),
+              alignment: Alignment.center,
+              height: 180.0,
+              width: 180.0,
+            )
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
+        */
+        body:Column(
+          children: [
+            Expanded(
+              child: Container(
+                child:Text('1',
+                style: TextStyle(fontSize: 30.0, color: Colors.white),
+                ),
+                color: Colors.green,
+                alignment: Alignment.center,
+              ),
+            )
+          ],
         )
       )
     );
