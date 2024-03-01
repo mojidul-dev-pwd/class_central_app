@@ -5,9 +5,16 @@ void main(){
   return runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+int counter = 0;
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -105,19 +112,71 @@ class MyApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         */
+        /*
         body:Column(
           children: [
             Expanded(
+              flex: 2,
               child: Container(
                 child:Text('1',
                 style: TextStyle(fontSize: 30.0, color: Colors.white),
                 ),
                 color: Colors.green,
                 alignment: Alignment.center,
+                //width: 100.0,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child:Text('2',
+                  style: TextStyle(fontSize: 30.0, color: Colors.white),
+                ),
+                color: Colors.pink,
+                alignment: Alignment.center,
+                //width: 100.0,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child:Text('3',
+                  style: TextStyle(fontSize: 30.0, color: Colors.white),
+                ),
+                color: Colors.blue,
+                alignment: Alignment.center,
+                //width: 100.0,
               ),
             )
           ],
         )
+        */
+          body:Column(
+            children: [
+              Expanded(
+                  flex: 2,
+                  child: InkWell(
+                    onTap: (){
+
+                      setState((){
+                        counter += 1;
+                        print("Press Container, $counter");
+                      });
+
+                    },
+                    child: Container(
+                      child:Text(counter.toString(),
+                        style: TextStyle(fontSize: 30.0, color: Colors.white),
+                      ),
+                      color: Colors.green,
+                      alignment: Alignment.center,
+                      //width: 100.0,
+                    ),
+                  ),
+                ),
+
+            ],
+          )
       )
     );
   }
