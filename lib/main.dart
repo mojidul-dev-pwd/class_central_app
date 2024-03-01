@@ -28,13 +28,35 @@ class MyApp extends StatelessWidget {
         )
         ),
         */
+        /*
         body:Center(
           child: Icon(
-            //Icons.favorite,
-            Icons.android,
-            color:Colors.green,
-            size:200.0
+            Icons.favorite,
+            //Icons.android,
+            color:Color(0xFFF06292),
+            size:400.0
           ),
+        )
+        */
+        body: Container(
+          child: Text('Body Text',
+                style: TextStyle(
+                fontSize:50.0,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.green
+            ),
+          ),
+          decoration: BoxDecoration(
+            color: Colors.pink,
+            shape: BoxShape.rectangle
+          ),
+          margin: EdgeInsets.all(50.0),
+          //padding: EdgeInsets.symmetric(vertical: 10.0),
+          padding: EdgeInsets.symmetric(vertical:5.0, horizontal: 10.0),
+          alignment: Alignment.center,
+          height: 250.0,
+          width: 250,
         )
       )
     );
