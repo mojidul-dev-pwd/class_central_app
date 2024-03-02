@@ -7,7 +7,43 @@ void main(){
 
 int counter = 0;
 String input = '', value='', resultFinal='';
-int value1=0, value2=0, result = 0, presskey=0, operator=0;
+int value1=0, value2=0, result = 0, presskey=0, operator=0, pressequal=0, activity=0;
+double? dresult;
+
+void clearData(){
+  if(pressequal == 1 && value2>0){
+    input = '';
+    value = '';
+    presskey = 0;
+    operator = 0;
+    presskey = 0;
+    resultFinal = '';
+    pressequal = 0;
+    value1 = 0;
+    value2 = 0;
+  }
+}
+
+void clearAll(){
+  input = '';
+  value = '';
+  presskey = 0;
+  operator = 0;
+  presskey = 0;
+  resultFinal = '';
+  pressequal = 0;
+  value1 = 0;
+  value2 = 0;
+  result = 0;
+  dresult = null;
+}
+
+acceptMaxLength(){
+  if(input.length>=16){
+    clearAll();
+  }
+}
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -54,6 +90,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                         onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '1';
                           value = value + '1';
@@ -72,6 +110,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '2';
                           value = value + '2';
@@ -90,6 +130,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '3';
                           value = value + '3';
@@ -108,11 +150,15 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          presskey = 1;
-                          input = input+'+';
-                          value1 = int.parse(value);
-                          value = '';
-                          print("Value1 $value");
+                          clearData();
+                          if(presskey == 1 && operator == 0){
+                            activity = 1;
+                            input = input+'+';
+                            value1 = int.parse(value);
+                            operator += 1;
+                            value = '';
+                            print("Value1 $value");
+                          }
                         });
                       },
                       child: Container(
@@ -133,6 +179,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '4';
                           value = value + '4';
@@ -151,6 +199,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '5';
                           value = value + '5';
@@ -169,6 +219,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '6';
                           value = value + '6';
@@ -184,10 +236,25 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      child: Icon(Icons.remove, color: Colors.white, size: 24.0,),
-                      color: Color(0xFFAD1457),
-                      alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          clearData();
+                          if(presskey == 1 && operator == 0){
+                            activity = 2;
+                            input = input+'-';
+                            value1 = int.parse(value);
+                            operator += 1;
+                            value = '';
+                            print("Value1 $value");
+                          }
+                        });
+                      },
+                      child: Container(
+                        child: Icon(Icons.remove, color: Colors.white, size: 24.0,),
+                        color: Color(0xFFAD1457),
+                        alignment: Alignment.center,
+                      ),
                     ),
                   )
                 ],
@@ -201,6 +268,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '7';
                           value = value + '7';
@@ -219,6 +288,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '8';
                           value = value + '8';
@@ -237,6 +308,8 @@ class _MyAppState extends State<MyApp> {
                     child: InkWell(
                       onTap: (){
                         setState((){
+                          acceptMaxLength();
+                          clearData();
                           presskey = 1;
                           input = input + '9';
                           value = value + '9';
@@ -252,10 +325,25 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      child: Icon(Icons.clear, color: Colors.white, size: 24.0,),
-                      color: Color(0xFFE91E63),
-                      alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          clearData();
+                          if(presskey == 1 && operator == 0){
+                            activity = 3;
+                            input = input+'x';
+                            value1 = int.parse(value);
+                            operator += 1;
+                            value = '';
+                            print("Value1 $value");
+                          }
+                        });
+                      },
+                      child: Container(
+                        child: Icon(Icons.clear, color: Colors.white, size: 24.0,),
+                        color: Color(0xFFE91E63),
+                        alignment: Alignment.center,
+                      ),
                     ),
                   )
                 ],
@@ -266,29 +354,75 @@ class _MyAppState extends State<MyApp> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      child: Text('0', style: TextStyle(fontSize: 36.0, color: Colors.white),),
-                      color: Color(0xFFE91E63),
-                      alignment: Alignment.center,
+                    child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        acceptMaxLength();
+                        clearData();
+                        presskey = 1;
+                        input = input + '0';
+                        value = value + '0';
+                        print("Press $input");
+                        print("value $value");
+                      });
+                    },
+                      child: Container(
+                        child: Text('0', style: TextStyle(fontSize: 36.0, color: Colors.white),),
+                        color: Color(0xFFE91E63),
+                        alignment: Alignment.center,
+                      ),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      child: Text('C', style: TextStyle(fontSize: 36.0, color: Colors.white),),
-                      color: Color(0xFFD81B60),
-                      alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          clearAll();
+                        });
+                      },
+                      child: Container(
+                        child: Text('C', style: TextStyle(fontSize: 36.0, color: Colors.white),),
+                        color: Color(0xFFD81B60),
+                        alignment: Alignment.center,
+                      ),
                     ),
                   ),
                   Expanded(
                     child: InkWell(
                       onTap: () {
                         setState(() {
+                          pressequal = 1;
                           value2 = int.parse(value);
                           print("value2= $value2");
-                          result = value1 + value2;
-                          print("result= $result");
-                          if(result>0)
+                          if(activity == 1){
+                            result = value1 + value2;
+                            print("result= $result");
+                          }
+                          if(activity == 2){
+                            result = value1 - value2;
+                            print("result= $result");
+                          }
+                          if(activity == 3){
+                            result = value1 * value2;
+                            print("result= $result");
+                          }
                           resultFinal = "="+result.toString();
+                          if(activity == 4){
+                            if(value2 == 0){
+                              clearAll();
+                            }
+                            if(value2 != 0){
+                              dresult = value1 / value2;
+                              var slArr = dresult.toString().split(".");
+                              if(int.parse(slArr[1]) == 0){
+                                result = int.parse(slArr[0]);
+                                resultFinal = "="+result.toString();
+                              }else{
+                                print("result= $result");
+                                resultFinal = "=${dresult != null ? dresult?.toStringAsFixed(2) : ''}";
+                              }
+                            }
+                          }
                         });
                       },
                       child: Container(
@@ -299,10 +433,25 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      child: Text('/', style: TextStyle(fontSize: 36.0, color: Colors.white),),
-                      color: Color(0xFFAD1457),
-                      alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          clearData();
+                          if(presskey == 1 && operator == 0){
+                            activity = 4;
+                            input = input+'/';
+                            value1 = int.parse(value);
+                            operator += 1;
+                            value = '';
+                            print("Value1 $value");
+                          }
+                        });
+                      },
+                      child: Container(
+                        child: Text('/', style: TextStyle(fontSize: 36.0, color: Colors.white),),
+                        color: Color(0xFFAD1457),
+                        alignment: Alignment.center,
+                      ),
                     ),
                   )
                 ],
